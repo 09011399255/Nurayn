@@ -2,7 +2,13 @@
 
 Open the local preview at http://127.0.0.1:4175/ on this computer.
 
-To restart it, open a terminal in this folder and run `npm start`. Node.js is required. Keep the terminal running while viewing the site. No installation or build step is needed. This is a local preview, not a public deployment.
+To restart it, open a terminal in this folder and run `npm start`. Node.js is required. Keep the terminal running while viewing the site. No installation or build step is needed for local development.
+
+## Deploy to Vercel
+
+Import this repository with its root directory left at the repository root. The included `vercel.json` selects the Other framework preset, runs `npm run build`, and publishes `dist/`. The build copies the website and its assets into that directory. `server.mjs` is only the local preview server and is not part of the deployed output.
+
+Push changes to the connected production branch (`main`) to trigger a new deployment. If a dashboard root-directory override was added, clear it so Vercel can read the root-level configuration. The deployment can be checked at https://nurayn-lilac.vercel.app/.
 
 ## What is included
 
