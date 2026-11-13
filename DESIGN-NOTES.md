@@ -23,6 +23,20 @@ The optional gallery uses native horizontal scrolling and snap points. Visible a
 
 ## Reference research
 
+### A more human studio
+
+The studio introduction now speaks directly to the founder bringing an idea to Nurayn. The old pinned slogan and decorative cards have been replaced by a readable studio letter. A new Little Fixers section explains three specific choices in the supplied concept: a clear invitation, a manageable repair task, and encouragement after completion. The interaction changes the real project screens and their commentary. Services explain the work a client can commission; Working Together explains the decisions and deliverables at each stage.
+
+The hero, supplied wordmark, work index/gallery, interactive studio and footer retain their established direction. Navigation and control symbols are now official local Lucide SVGs, fixing the iPhone emoji rendering of Unicode arrows.
+
+- [Studio Beau — About](https://studiobeau.au/about): read and visually inspected its introduction and team section. Its specific studio story and restrained hierarchy demonstrate how straightforward content and real people can create warmth. Nurayn’s copy and layout are original; no people, biographies or photography were borrowed.
+- [Behalf — Republish on Behance](https://www.behance.net/gallery/117480001/Republish-Website): the published project description connects its type tester to the purpose and history of the typography. This supports using interaction to explain the work itself. Its animation behaviour was not tested.
+- [1/1 Studio](https://1of1studio.com/): its published project index identifies supporting artifacts such as identity details, printed matter and website screens. This supports giving context to the supplied project images instead of relying only on cover imagery. Detailed animation behaviour was not verified.
+
+Pinterest did not yield a useful verifiable reference in this research pass. Real founder/workspace photographs and an approved origin story would be the strongest further additions; neither has been fabricated.
+
+### Earlier references
+
 - [ZZDP Architects on Awwwards](https://www.awwwards.com/sites/zzdp-architects), and its [live site](https://www.zzdp.nl/): reviewed for large imagery, a strong wordmark and image-based navigation. Listed as a nominee when reviewed, not represented here as an award winner.
 - [HelloAsso Brandbook on Awwwards](https://www.awwwards.com/sites/helloasso-brandbook), and its [live brandbook](https://brand.helloasso.com/): reviewed for presenting an identity system as a digital experience. Listed as a nominee when reviewed.
 

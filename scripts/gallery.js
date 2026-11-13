@@ -1,3 +1,4 @@
+import { icon } from './icons.js';
 import { projects } from './projects.js';
 
 export function initGallery(reduce) {
@@ -77,7 +78,7 @@ export function initGallery(reduce) {
       '<div class="preview-scope"><span class="micro">THE FOCUS / ' + p.category + '</span><p>' + p.focus + '</p></div>' +
       '<div class="project-preview-grid ' + (p.layout === 'portrait' ? 'is-portrait' : '') + '">' + figures + '</div>';
     document.querySelector('#case-number').textContent = '0' + (i + 1) + ' / PROJECT PREVIEW';
-    document.querySelector('#next-case').textContent = 'Next: ' + projects[(i + 1) % projects.length].name + ' ↗';
+    document.querySelector('#next-case').innerHTML = 'Next: ' + projects[(i + 1) % projects.length].name + icon('arrow-up-right');
   }
   async function openCase(i, button) {
     if (opening || dialog.open) return;

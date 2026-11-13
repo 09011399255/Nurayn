@@ -1,0 +1,3 @@
+export function icon(name) {
+  return '<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><use href="assets/lucide.svg#' + name + '"></use></svg>';
+}

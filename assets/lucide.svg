@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="arrow-up-right" viewBox="0 0 24 24">
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</symbol>
+<symbol id="arrow-down-left" viewBox="0 0 24 24">
+  <path d="M17 7 7 17" />
+  <path d="M17 17H7V7" />
+</symbol>
+<symbol id="arrow-left" viewBox="0 0 24 24">
+  <path d="m12 19-7-7 7-7" />
+  <path d="M19 12H5" />
+</symbol>
+<symbol id="arrow-right" viewBox="0 0 24 24">
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</symbol>
+<symbol id="arrow-up" viewBox="0 0 24 24">
+  <path d="m5 12 7-7 7 7" />
+  <path d="M12 19V5" />
+</symbol>
+<symbol id="arrow-down" viewBox="0 0 24 24">
+  <path d="M12 5v14" />
+  <path d="m19 12-7 7-7-7" />
+</symbol>
+<symbol id="move-horizontal" viewBox="0 0 24 24">
+  <path d="m18 8 4 4-4 4" />
+  <path d="M2 12h20" />
+  <path d="m6 8-4 4 4 4" />
+</symbol>
+<symbol id="rotate-ccw" viewBox="0 0 24 24">
+  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+  <path d="M3 3v5h5" />
+</symbol>
+<symbol id="asterisk" viewBox="0 0 24 24">
+  <path d="M12 5v14" />
+  <path d="m18.065 8.496-12.125 7" />
+  <path d="m5.94 8.504 12.125 7" />
+</symbol>
+<symbol id="contrast" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="10" />
+  <path d="M12 18a6 6 0 0 0 0-12v12z" />
+</symbol>
+<symbol id="x" viewBox="0 0 24 24">
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</symbol>
+<symbol id="plus" viewBox="0 0 24 24">
+  <path d="M5 12h14" />
+  <path d="M12 5v14" />
+</symbol>
+<symbol id="list" viewBox="0 0 24 24">
+  <path d="M3 5h.01" />
+  <path d="M3 12h.01" />
+  <path d="M3 19h.01" />
+  <path d="M8 5h13" />
+  <path d="M8 12h13" />
+  <path d="M8 19h13" />
+</symbol>
+<symbol id="gallery-horizontal-end" viewBox="0 0 24 24">
+  <path d="M2 7v10" />
+  <path d="M6 5v14" />
+  <rect width="12" height="18" x="10" y="3" rx="2" />
+</symbol>
+<symbol id="check" viewBox="0 0 24 24">
+  <path d="M20 6 9 17l-5-5" />
+</symbol>
+<symbol id="message-circle" viewBox="0 0 24 24">
+  <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
+</symbol>
+<symbol id="layers" viewBox="0 0 24 24">
+  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
+  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
+  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
+</symbol>
+<symbol id="code-xml" viewBox="0 0 24 24">
+  <path d="m18 16 4-4-4-4" />
+  <path d="m6 8-4 4 4 4" />
+  <path d="m14.5 4-5 16" />
+</symbol>
+<symbol id="send" viewBox="0 0 24 24">
+  <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+  <path d="m21.854 2.147-10.94 10.939" />
+</symbol>
+<symbol id="chevron-down" viewBox="0 0 24 24">
+  <path d="m6 9 6 6 6-6" />
+</symbol>
+</svg>

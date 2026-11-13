@@ -14,7 +14,9 @@ Push changes to the connected production branch (`main`) to trigger a new deploy
 
 Your original vector Nurayn wordmark appears in the header, hero and footer, with its N used for the favicon. The layout combines off-white and near-black, with a sliding full-screen transition between light and dark modes.
 
-The eight sections are Home, Studio, Selected Work, a Honeydrop identity feature, Capabilities, the Open Studio, Process and Contact. Selected Work contains Reloop first, Honeydrop second, Little Fixers and PACE (the chosen working name for the fitness app). Each opens a project preview using the supplied imagery. These are previews, ready for fuller stories when more screens and project details arrive.
+The nine sections are Home, a studio introduction, Selected Work, a Honeydrop identity feature, What We Care About, Capabilities, the Open Studio, Working Together and Contact. Selected Work contains Reloop first, Honeydrop second, Little Fixers and PACE (the chosen working name for the fitness app). Each opens a project preview using the supplied imagery. These are previews, ready for fuller stories when more screens and project details arrive.
+
+Interface icons use locally stored Lucide SVGs, including dynamically updated controls. They no longer rely on Unicode arrow characters, which can appear as colourful emoji on iPhones. The icon sprite and license are included in the assets folder; no icon CDN or icon font is required.
 
 ## Explore
 
@@ -24,9 +26,10 @@ The eight sections are Home, Studio, Selected Work, a Honeydrop identity feature
 - Switch to Gallery for native horizontal swipe scrolling. Use the visible arrows, named project shortcuts, or Left/Right, Home and End when the gallery is focused. Every image opens its project directly.
 - Open project previews, browse to the next project, and close with Escape. Keyboard focus returns to the opening control.
 - Drag Honeydrop's divider between the monogram and imagery. Arrow keys, Home and End also work.
+- Explore three design decisions in Little Fixers: an easy first step, a manageable choice and encouragement after completing the repair. Buttons update the supplied screen and its explanation. Up/Down, Home and End work when a tab is focused.
 - Select a discipline to change its example and description. Up/Down keys move through the service tabs.
 - In the Open Studio, edit the live identity, resize an actual interface, or spin the record. These are clearly presented as studio experiments.
-- Expand the process steps to change their text and accompanying diagram.
+- Expand Working Together to see what happens at each stage and what you receive.
 
 ## Checks completed
 
@@ -43,10 +46,11 @@ Fonts load from Google Fonts with system fallbacks. The mini shop is a demonstra
 ## Source
 
 - `index.html`: page structure, content and inline logo paths.
-- `styles/main.css`, `styles/edition.css` and `styles/work.css`: layout, motion, responsive styles and the revised work section.
+- `styles/main.css`, `styles/edition.css`, `styles/work.css` and `styles/studio.css`: layout, motion, responsive styles and the revised studio and work sections.
 - `scripts/main.js`: navigation and theme transition.
 - `scripts/gallery.js` and `scripts/projects.js`: gallery and project previews.
 - `scripts/edition.js`: reveal, capabilities and process controls.
+- `scripts/icons.js` and `assets/lucide.svg`: shared local vector icons for static and dynamically updated controls.
 - `scripts/playground.js`: live identity, responsive interface and record physics.
 - `scripts/atmosphere.js`: pointer-following binary field.
 - `ASSETS.md`: supplied artwork and source history.

@@ -41,9 +41,6 @@ toggle.addEventListener('click', async () => {
 const chapters = [...document.querySelectorAll('.chapter')];
 const links = [...document.querySelectorAll('.dock-links a')];
 const indicator = document.querySelector('.dock-indicator');
-const studio = document.querySelector('#studio');
-const studioPin = studio.querySelector('.studio-pin');
-const lines = [...studio.querySelectorAll('.story-line')];
 let activeSection = '';
 let queued = false;
 function updatePage() {
@@ -65,14 +62,6 @@ function updatePage() {
   const active = links.find(link => link.dataset.section === group);
   indicator.style.setProperty('--dock-x', active.offsetLeft + 'px');
   indicator.style.setProperty('--dock-width', active.offsetWidth + 'px');
-  const box = studio.getBoundingClientRect();
-  const progress = clamp(-box.top / Math.max(1, box.height - studioPin.offsetHeight), 0, 1);
-  studio.style.setProperty('--story-progress', progress);
-  lines.forEach((line, i) => {
-    const shown = reduce.matches ? 1 : clamp((progress + .3 - i * .19) * 3.8, .26, 1);
-    line.style.opacity = shown;
-  });
-  studio.querySelector('.studio-step').textContent = progress > .55 ? 'INTENT / 02' : 'INSTINCT / 01';
 }
 function schedulePage() { if (!queued) { queued = true; requestAnimationFrame(updatePage); } }
 addEventListener('scroll', schedulePage, { passive: true });

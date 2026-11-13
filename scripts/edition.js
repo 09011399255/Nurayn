@@ -1,3 +1,4 @@
+import { icon } from './icons.js';
 import { projects } from './projects.js';
 
 export function initEdition(reduce) {
@@ -50,18 +51,18 @@ export function initEdition(reduce) {
   const services = {
     brand: {
       image: 'honeydrop-guidelines.jpg', alt: 'Honeydrop brand guidelines and editorial art direction',
-      description: 'A visual language with its own point of view. Designed to hold together, from the smallest mark to the biggest expression.',
-      href: '#identity', link: 'See it in Honeydrop ↗'
+      description: 'Help people recognise you and understand what you stand for. A distinctive identity, clear visual direction, and a system you can actually use.',
+      href: '#identity', link: 'See it in Honeydrop'
     },
     product: {
       image: 'reloop.jpg', alt: 'Reloop recycling marketplace dashboard',
-      description: 'Make the complicated feel clear. Shape journeys, interfaces and design systems around the people who will actually use them.',
-      href: '#work', link: 'Explore the product work ↗'
+      description: 'Help people find their way, understand their choices and get things done. User flows, interfaces and design systems for mobile and web products.',
+      href: '#work', link: 'Explore the product work'
     },
     web: {
       image: 'little-fixers-repair.jpg', alt: 'Little Fixers interaction concept: choosing a wheel for Milo',
-      description: 'Give the idea a life beyond the layout. Responsive websites, working prototypes and interactions with a reason to exist.',
-      href: '#craft', link: 'Get hands-on in the studio ↗'
+      description: 'Take the design into a working experience. Responsive websites, frontend development and e-commerce interfaces, with care for the details people touch.',
+      href: '#craft', link: 'Get hands-on in the studio'
     }
   };
   const tabs = [...document.querySelectorAll('[data-service]')];
@@ -81,7 +82,7 @@ export function initEdition(reduce) {
     img.alt = service.alt;
     document.querySelector('#service-description').textContent = service.description;
     const link = document.querySelector('#service-link');
-    link.href = service.href; link.textContent = service.link;
+    link.href = service.href; link.innerHTML = service.link + icon('arrow-up-right');
     if (!reduce.matches) {
       panel.classList.remove('is-changing');
       requestAnimationFrame(() => panel.classList.add('is-changing'));
@@ -98,15 +99,37 @@ export function initEdition(reduce) {
     });
   });
   const steps = [...document.querySelectorAll('[data-process]')];
-  const diagram = document.querySelector('.process-diagram');
-  const symbols = ['?', '✳', '↗'];
-  const labels = ['01 / FIND THE QUESTION', '02 / FIND THE CHARACTER', '03 / BRING IT TO LIFE'];
   steps.forEach(step => step.addEventListener('toggle', () => {
-    if (!step.open) return;
-    steps.forEach(other => { if (other !== step) other.open = false; });
-    const i = Number(step.dataset.process);
-    diagram.dataset.stage = i;
-    diagram.querySelector('.diagram-core').textContent = symbols[i];
-    diagram.querySelector('.diagram-label').textContent = labels[i];
+    if (step.open) steps.forEach(other => { if (other !== step) other.open = false; });
   }));
+  const careTabs = [...document.querySelectorAll('[data-care]')];
+  const carePanel = document.querySelector('#care-panel');
+  const careImage = document.querySelector('#care-image');
+  const care = [
+    { image:'little-fixers.jpg', alt:'Little Fixers workshop with a clear invitation to repair Milo', description:'One toy, one small repair, one clear invitation. The workshop gives a child somewhere to begin without asking them to understand the whole app first.', takeaway:'Clarity is a way of being welcoming.' },
+    { image:'little-fixers-repair.jpg', alt:'Little Fixers repair screen asking which wheel fits Milo', description:'Three recognisable pieces. One question: which wheel fits? The repair screen keeps the task small and gives the child a chance to work it out.', takeaway:'Good guidance leaves room for discovery.' },
+    { image:'little-fixers-success.jpg', alt:'Little Fixers success screen celebrating Milo being repaired', description:'The toy moves again. The message explains what the child achieved, then offers another toy to try. The response belongs to the effort they just made.', takeaway:'A little acknowledgement can mean a lot.' }
+  ];
+  let careAnimation;
+  function chooseCare(i, focus = false) {
+    const item = care[i];
+    careTabs.forEach((tab, n) => { tab.setAttribute('aria-selected', String(n === i)); tab.tabIndex = n === i ? 0 : -1; });
+    carePanel.setAttribute('aria-labelledby', careTabs[i].id);
+    document.querySelector('#care-count').textContent = '0' + (i + 1) + ' / 03';
+    document.querySelector('#care-description').textContent = item.description;
+    document.querySelector('#care-takeaway').textContent = item.takeaway;
+    careImage.src = 'assets/' + item.image; careImage.alt = item.alt;
+    careAnimation?.cancel();
+    if (!reduce.matches) careAnimation = careImage.animate([{opacity:.2,transform:'translateY(12px)'},{opacity:1,transform:'none'}], {duration:400,easing:'cubic-bezier(.22,.75,.15,1)'});
+    if (focus) careTabs[i].focus({preventScroll:true});
+  }
+  careTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => chooseCare(i));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowDown','ArrowUp','Home','End'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? careTabs.length - 1 : (i + (event.key === 'ArrowDown' ? 1 : careTabs.length - 1)) % careTabs.length;
+      chooseCare(next, true);
+    });
+  });
 }
