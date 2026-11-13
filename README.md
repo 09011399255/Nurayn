@@ -20,7 +20,8 @@ The eight sections are Home, Studio, Selected Work, a Honeydrop identity feature
 
 - Move your pointer to reveal the soft binary field.
 - Navigate with the bottom dock; use its circular button to switch themes.
-- Drag the project gallery, use its arrows, or focus it and use Left/Right, Home and End. Switch to Index for a compact overview.
+- Selected Work opens in Index: hover or focus a project to change the desktop preview, then click to open it. On phones, each project has its own thumbnail and opens with one tap.
+- Switch to Gallery for native horizontal swipe scrolling. Use the visible arrows, named project shortcuts, or Left/Right, Home and End when the gallery is focused. Every image opens its project directly.
 - Open project previews, browse to the next project, and close with Escape. Keyboard focus returns to the opening control.
 - Drag Honeydrop's divider between the monogram and imagery. Arrow keys, Home and End also work.
 - Select a discipline to change its example and description. Up/Down keys move through the service tabs.
@@ -42,7 +43,7 @@ Fonts load from Google Fonts with system fallbacks. The mini shop is a demonstra
 ## Source
 
 - `index.html`: page structure, content and inline logo paths.
-- `styles/main.css` and `styles/edition.css`: layout, motion and responsive styles.
+- `styles/main.css`, `styles/edition.css` and `styles/work.css`: layout, motion, responsive styles and the revised work section.
 - `scripts/main.js`: navigation and theme transition.
 - `scripts/gallery.js` and `scripts/projects.js`: gallery and project previews.
 - `scripts/edition.js`: reveal, capabilities and process controls.

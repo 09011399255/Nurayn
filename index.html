@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/edition.css">
+  <link rel="stylesheet" href="styles/work.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/reloop.jpg">
   <script type="module" src="scripts/main.js"></script>
@@ -54,25 +55,58 @@
       </div>
     </section>
 
-    <section id="work" class="work chapter" aria-labelledby="work-heading">
-      <div class="section-kicker padded"><span class="micro">02 / SELECTED WORK</span><span class="micro">DISTINCT WORLDS. CONNECTED THINKING.</span></div>
-      <div class="work-heading-row padded"><h2 id="work-heading">Different worlds.<br><span class="serif">Same curiosity.</span></h2><div class="work-aside"><p>A few things we've put<br>our minds and hands into.</p><div class="work-view" role="group" aria-label="Project display"><button data-work-view="gallery" aria-pressed="true">Gallery</button><button data-work-view="index" aria-pressed="false">Index</button></div></div></div>
-      <div id="gallery-view"><div class="gallery" id="gallery" aria-label="Selected projects" aria-roledescription="carousel" tabindex="0" data-binary-ignore><div class="gallery-track"><article class="project-card is-active" data-project="0" aria-label="Reloop, project 1 of 4">
-      <button class="project-image cover-reloop cover-portrait" data-open-project="0" aria-label="Open Reloop project preview" tabindex="0"><span class="cover-copy"><span class="micro">CIRCULAR ECONOMY</span><strong>Closing<br>the loop.</strong><span class="micro">PRODUCT DESIGN</span></span><img src="assets/reloop.jpg" alt="Reloop design preview" draggable="false" loading="lazy"><span class="project-open">Explore the project ↗</span></button>
-      <div class="project-caption"><div><span class="micro">01 / CIRCULAR ECONOMY</span><h3>Reloop</h3></div><p>Mobile experience · Marketplace</p><span class="project-arrow" aria-hidden="true">↗</span></div>
-    </article><article class="project-card " data-project="1" aria-label="Honeydrop, project 2 of 4">
-      <button class="project-image cover-honeydrop cover-landscape" data-open-project="1" aria-label="Open Honeydrop project preview" tabindex="-1"><img src="assets/honeydrop.jpg" alt="Honeydrop design preview" draggable="false" loading="lazy"><span class="project-open">Explore the project ↗</span></button>
-      <div class="project-caption"><div><span class="micro">02 / AFRICAN LUXURY</span><h3>Honeydrop</h3></div><p>Identity · Art direction</p><span class="project-arrow" aria-hidden="true">↗</span></div>
-    </article><article class="project-card " data-project="2" aria-label="Little Fixers, project 3 of 4">
-      <button class="project-image cover-little-fixers cover-portrait" data-open-project="2" aria-label="Open Little Fixers project preview" tabindex="-1"><span class="cover-copy"><span class="micro">PLAY & LEARNING</span><strong>Small hands.<br>Big possibility.</strong><span class="micro">PRODUCT DESIGN</span></span><img src="assets/little-fixers.jpg" alt="Little Fixers design preview" draggable="false" loading="lazy"><span class="project-open">Explore the project ↗</span></button>
-      <div class="project-caption"><div><span class="micro">03 / PLAY & LEARNING</span><h3>Little Fixers</h3></div><p>App concept · Interaction</p><span class="project-arrow" aria-hidden="true">↗</span></div>
-    </article><article class="project-card " data-project="3" aria-label="PACE, project 4 of 4">
-      <button class="project-image cover-fitness cover-landscape" data-open-project="3" aria-label="Open PACE project preview" tabindex="-1"><img src="assets/fitness.jpg" alt="PACE design preview" draggable="false" loading="lazy"><span class="project-open">Explore the project ↗</span></button>
-      <div class="project-caption"><div><span class="micro">04 / FITNESS & WELLBEING</span><h3>PACE</h3></div><p>Mobile interface · Theme systems</p><span class="project-arrow" aria-hidden="true">↗</span></div>
-    </article></div><div class="focus-brackets" aria-hidden="true"><span>(</span><span>)</span></div></div>
-      <div class="gallery-toolbar padded"><div class="gallery-progress" aria-hidden="true"><span></span></div><span id="gallery-count" class="micro" aria-live="polite">01 — 04</span><div class="gallery-controls"><button id="prev-project" aria-label="Previous project">←</button><button id="next-project" aria-label="Next project">→</button></div></div></div>
-      <div id="project-index" class="project-index padded" hidden><button class="project-index-row" data-open-project="0"><span class="micro">01</span><strong>Reloop</strong><span class="index-category">PRODUCT DESIGN</span><img src="assets/reloop.jpg" alt="" loading="lazy"><span class="index-arrow" aria-hidden="true">↗</span></button><button class="project-index-row" data-open-project="1"><span class="micro">02</span><strong>Honeydrop</strong><span class="index-category">BRAND IDENTITY</span><img src="assets/honeydrop.jpg" alt="" loading="lazy"><span class="index-arrow" aria-hidden="true">↗</span></button><button class="project-index-row" data-open-project="2"><span class="micro">03</span><strong>Little Fixers</strong><span class="index-category">PRODUCT DESIGN</span><img src="assets/little-fixers.jpg" alt="" loading="lazy"><span class="index-arrow" aria-hidden="true">↗</span></button><button class="project-index-row" data-open-project="3"><span class="micro">04</span><strong>PACE</strong><span class="index-category">DIGITAL PRODUCT</span><img src="assets/fitness.jpg" alt="" loading="lazy"><span class="index-arrow" aria-hidden="true">↗</span></button></div>
-      <div class="work-footnote micro padded"><span>BRAND IDENTITIES / DIGITAL PRODUCTS / EXPERIENCES</span><span>DRAG TO DISCOVER · CLICK TO EXPLORE</span></div>
+    <section id="work" class="work chapter" aria-labelledby="work-heading" data-binary-ignore>
+      <div class="section-kicker padded"><span class="micro">02 / SELECTED PROJECTS</span><span class="micro">INDEPENDENT THINKING. CONSIDERED DESIGN.</span></div>
+      <div class="work-heading-row padded"><h2 id="work-heading">Selected <em>work.</em></h2><p>Brand identities and digital products.<br> Different worlds, the same care.</p></div>
+      <div class="work-viewbar padded"><span class="micro">04 PROJECTS / EXPLORE THE DETAILS</span><div class="work-view" role="group" aria-label="Project display">
+        <button data-work-view="index" aria-controls="project-index" aria-pressed="true"><span class="view-icon view-icon-list" aria-hidden="true"></span>Index</button>
+        <button data-work-view="gallery" aria-controls="gallery-view" aria-pressed="false"><span class="view-icon view-icon-gallery" aria-hidden="true"></span>Gallery</button>
+      </div></div>
+      <div id="project-index" class="work-index-layout padded">
+        <div class="index-feature">
+          <button class="index-feature-art preview-reloop" id="index-preview" data-open-project="0" aria-label="Open Reloop project preview"><img id="index-preview-image" src="assets/reloop.jpg" alt="Reloop recycling marketplace dashboard" loading="lazy"><span class="index-feature-cta">Explore project <span aria-hidden="true">↗</span></span></button>
+          <div class="index-feature-caption"><span id="index-preview-field" class="micro">01 / CIRCULAR ECONOMY</span><span id="index-preview-scope">Mobile experience · Marketplace</span></div>
+        </div>
+        <div class="work-rows"><button class="work-row is-previewed" data-index-project="0" data-open-project="0" aria-label="Open Reloop project preview">
+          <span class="work-row-number micro">01</span>
+          <span class="work-row-thumb"><img src="assets/reloop.jpg" alt="" loading="lazy"></span>
+          <span class="work-row-main"><span class="work-row-category micro">PRODUCT DESIGN</span><strong>Reloop</strong><span class="work-row-description">Connecting collectors with recycling companies.</span></span>
+          <span class="work-row-action"><span>View project</span><span aria-hidden="true">↗</span></span>
+        </button><button class="work-row" data-index-project="1" data-open-project="1" aria-label="Open Honeydrop project preview">
+          <span class="work-row-number micro">02</span>
+          <span class="work-row-thumb"><img src="assets/honeydrop.jpg" alt="" loading="lazy"></span>
+          <span class="work-row-main"><span class="work-row-category micro">BRAND IDENTITY</span><strong>Honeydrop</strong><span class="work-row-description">A modern expression of African luxury.</span></span>
+          <span class="work-row-action"><span>View project</span><span aria-hidden="true">↗</span></span>
+        </button><button class="work-row" data-index-project="2" data-open-project="2" aria-label="Open Little Fixers project preview">
+          <span class="work-row-number micro">03</span>
+          <span class="work-row-thumb"><img src="assets/little-fixers.jpg" alt="" loading="lazy"></span>
+          <span class="work-row-main"><span class="work-row-category micro">PRODUCT DESIGN</span><strong>Little Fixers</strong><span class="work-row-description">A little thinking. A little tinkering.</span></span>
+          <span class="work-row-action"><span>View project</span><span aria-hidden="true">↗</span></span>
+        </button><button class="work-row" data-index-project="3" data-open-project="3" aria-label="Open PACE project preview">
+          <span class="work-row-number micro">04</span>
+          <span class="work-row-thumb"><img src="assets/fitness.jpg" alt="" loading="lazy"></span>
+          <span class="work-row-main"><span class="work-row-category micro">DIGITAL PRODUCT</span><strong>PACE</strong><span class="work-row-description">Good movement starts with the right guidance.</span></span>
+          <span class="work-row-action"><span>View project</span><span aria-hidden="true">↗</span></span>
+        </button></div>
+      </div>
+      <div id="gallery-view" hidden>
+        <div class="gallery-topline padded"><p id="gallery-instructions"><span aria-hidden="true">↔</span> Swipe to explore, or use the arrows.</p><div class="gallery-controls"><span id="gallery-count" class="micro" role="status" aria-live="polite">01 / 04</span><button id="prev-project" aria-label="Previous project" disabled>←</button><button id="next-project" aria-label="Next project">→</button></div></div>
+        <div class="gallery" id="gallery" role="region" aria-label="Project gallery" aria-roledescription="carousel" aria-describedby="gallery-instructions" tabindex="0"><div class="gallery-track"><article class="project-card gallery-card-portrait is-active" data-project="0" aria-label="Reloop, project 1 of 4">
+            <button class="project-image cover-reloop" data-open-project="0" aria-label="Open Reloop project preview"><img src="assets/reloop.jpg" alt="Reloop design preview" draggable="false" loading="lazy"><span class="project-open">View project <span aria-hidden="true">↗</span></span></button>
+            <div class="project-caption"><div><span class="micro">01 / CIRCULAR ECONOMY</span><h3>Reloop</h3></div><p>Mobile experience · Marketplace</p></div>
+          </article><article class="project-card gallery-card-landscape" data-project="1" aria-label="Honeydrop, project 2 of 4">
+            <button class="project-image cover-honeydrop" data-open-project="1" aria-label="Open Honeydrop project preview"><img src="assets/honeydrop.jpg" alt="Honeydrop design preview" draggable="false" loading="lazy"><span class="project-open">View project <span aria-hidden="true">↗</span></span></button>
+            <div class="project-caption"><div><span class="micro">02 / AFRICAN LUXURY</span><h3>Honeydrop</h3></div><p>Identity · Art direction</p></div>
+          </article><article class="project-card gallery-card-portrait" data-project="2" aria-label="Little Fixers, project 3 of 4">
+            <button class="project-image cover-little-fixers" data-open-project="2" aria-label="Open Little Fixers project preview"><img src="assets/little-fixers.jpg" alt="Little Fixers design preview" draggable="false" loading="lazy"><span class="project-open">View project <span aria-hidden="true">↗</span></span></button>
+            <div class="project-caption"><div><span class="micro">03 / PLAY & LEARNING</span><h3>Little Fixers</h3></div><p>App concept · Interaction</p></div>
+          </article><article class="project-card gallery-card-landscape" data-project="3" aria-label="PACE, project 4 of 4">
+            <button class="project-image cover-fitness" data-open-project="3" aria-label="Open PACE project preview"><img src="assets/fitness.jpg" alt="PACE design preview" draggable="false" loading="lazy"><span class="project-open">View project <span aria-hidden="true">↗</span></span></button>
+            <div class="project-caption"><div><span class="micro">04 / FITNESS & WELLBEING</span><h3>PACE</h3></div><p>Mobile interface · Theme systems</p></div>
+          </article></div></div>
+        <div class="gallery-jumps padded" role="group" aria-label="Choose a project"><button data-gallery-go="0" aria-label="Show Reloop" aria-current="true"><span class="micro">01</span><span>Reloop</span></button><button data-gallery-go="1" aria-label="Show Honeydrop"><span class="micro">02</span><span>Honeydrop</span></button><button data-gallery-go="2" aria-label="Show Little Fixers"><span class="micro">03</span><span>Little Fixers</span></button><button data-gallery-go="3" aria-label="Show PACE"><span class="micro">04</span><span>PACE</span></button></div>
+      </div>
+      <div class="work-footnote micro padded"><span>FOUR DIFFERENT WORLDS. ONE CONNECTED STUDIO.</span><a href="#contact">HAVE SOMETHING IN MIND? ↗</a></div>
     </section>
 
     <section id="identity" class="identity-feature chapter" data-nav-group="work" aria-labelledby="identity-heading" data-binary-ignore>
@@ -148,7 +182,6 @@
     </section>
   </main>
   <nav class="chapter-dock" aria-label="Chapter navigation"><div class="dock-links"><span class="dock-indicator" aria-hidden="true"></span><a href="#home" data-section="home" aria-current="location">Home</a><a href="#studio" data-section="studio">Studio</a><a href="#work" data-section="work">Work</a><a href="#craft" data-section="craft">Play</a><a href="#contact" data-section="contact">Contact</a></div><span class="dock-separator"></span><button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span></button></nav>
-  <div class="drag-cursor" aria-hidden="true">DRAG<br><span>↔</span></div>
   <div class="theme-curtain" aria-hidden="true"></div>
   <dialog id="case-dialog" aria-labelledby="case-title"><div class="case-shell"><div class="case-top"><span class="micro" id="case-number">01 / PROJECT PREVIEW</span><button id="close-case" aria-label="Close case study">Close <span>×</span></button></div><div id="case-content"></div><div class="case-bottom"><span class="micro">SELECTED WORK / NURAYN</span><button id="next-case">Next project ↗</button></div></div></dialog>
 </body>

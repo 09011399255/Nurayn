@@ -1,3 +1,5 @@
+import { projects } from './projects.js';
+
 export function initEdition(reduce) {
   const views = [...document.querySelectorAll('[data-work-view]')];
   views.forEach(button => button.addEventListener('click', () => {
@@ -5,7 +7,36 @@ export function initEdition(reduce) {
     views.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     document.querySelector('#gallery-view').hidden = selected !== 'gallery';
     document.querySelector('#project-index').hidden = selected !== 'index';
+    if (selected === 'gallery') document.querySelector('#gallery').dispatchEvent(new Event('gallery:show'));
   }));
+
+  const rows = [...document.querySelectorAll('[data-index-project]')];
+  const preview = document.querySelector('#index-preview');
+  const previewImage = document.querySelector('#index-preview-image');
+  const scopes = ['Mobile experience · Marketplace', 'Identity · Art direction', 'App concept · Interaction', 'Mobile interface · Theme systems'];
+  let previewIndex = 0, previewAnimation;
+  function previewProject(i) {
+    if (i === previewIndex) return;
+    previewIndex = i;
+    const project = projects[i];
+    rows.forEach((row, n) => row.classList.toggle('is-previewed', n === i));
+    preview.dataset.openProject = i;
+    preview.className = 'index-feature-art preview-' + project.image;
+    preview.setAttribute('aria-label', 'Open ' + project.name + ' project preview');
+    previewImage.src = 'assets/' + project.image + '.jpg';
+    previewImage.alt = project.images[0].alt;
+    document.querySelector('#index-preview-field').textContent = String(i + 1).padStart(2, '0') + ' / ' + project.field;
+    document.querySelector('#index-preview-scope').textContent = scopes[i];
+    previewAnimation?.cancel();
+    if (!reduce.matches) previewAnimation = previewImage.animate([
+      { opacity: .35, transform: 'translateY(10px) scale(1.015)' },
+      { opacity: 1, transform: 'translateY(0) scale(1)' }
+    ], { duration: 420, easing: 'cubic-bezier(.22,.75,.15,1)' });
+  }
+  rows.forEach((row, i) => {
+    row.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') previewProject(i); });
+    row.addEventListener('focus', () => previewProject(i));
+  });
 
   const reveal = document.querySelector('#identity-reveal');
   const revealRange = document.querySelector('#identity-reveal-range');

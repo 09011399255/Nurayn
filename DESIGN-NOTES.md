@@ -15,6 +15,12 @@ The SVG wordmark is now the main opening gesture. The pointer-following binary f
 
 The website gives these projects the space and presentation of substantial work without inventing client relationships, launch status, testimonials or performance claims.
 
+## Browsing the work
+
+The index is the default view. A quieter, single-line heading leads into four project rows beside a large image; hover or keyboard focus changes the image, and every row opens its project immediately. On narrow screens, each row has its own thumbnail so the project stays identifiable without hovering.
+
+The optional gallery uses native horizontal scrolling and snap points. Visible arrows, a project count and named shortcuts make browsing explicit. The images are level and fully coloured, with a visible project-opening control. Simulated dragging, tilted cards, decorative brackets and the floating drag cursor have been removed from this section.
+
 ## Reference research
 
 - [ZZDP Architects on Awwwards](https://www.awwwards.com/sites/zzdp-architects), and its [live site](https://www.zzdp.nl/): reviewed for large imagery, a strong wordmark and image-based navigation. Listed as a nominee when reviewed, not represented here as an award winner.

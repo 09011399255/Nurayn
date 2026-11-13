@@ -2,83 +2,66 @@ import { projects } from './projects.js';
 
 export function initGallery(reduce) {
   const gallery = document.querySelector('#gallery');
-  const track = gallery.querySelector('.gallery-track');
   const cards = [...gallery.querySelectorAll('.project-card')];
-  const cursor = document.querySelector('.drag-cursor');
-  let index = 0, origin = 0, drag = null, blockClickUntil = 0;
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  function dimensions() {
-    const width = cards[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(track).gap) || 42;
-    return { width, step: width + gap };
-  }
-  function place(offset = 0) {
-    const { width, step } = dimensions();
-    origin = (gallery.clientWidth - width) / 2 - index * step;
-    track.style.transform = 'translate3d(' + (origin + offset) + 'px,0,0)';
-  }
-  function select(next) {
+  const jumps = [...document.querySelectorAll('[data-gallery-go]')];
+  let index = 0, scrollTimer = 0;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const gutter = () => parseFloat(getComputedStyle(gallery).scrollPaddingLeft) || 0;
+  function update(next) {
     index = clamp(next, 0, cards.length - 1);
     cards.forEach((card, i) => {
       card.classList.toggle('is-active', i === index);
-      card.classList.toggle('is-before', i < index);
-      card.querySelector('button').tabIndex = i === index ? 0 : -1;
-      card.setAttribute('aria-current', String(i === index));
+      if (i === index) card.setAttribute('aria-current', 'true');
+      else card.removeAttribute('aria-current');
     });
-    document.querySelector('#gallery-count').textContent = '0' + (index + 1) + ' — 0' + cards.length;
-    document.querySelector('.gallery-progress').style.setProperty('--project-index', index);
+    jumps.forEach((button, i) => {
+      if (i === index) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+    document.querySelector('#gallery-count').textContent = String(index + 1).padStart(2, '0') + ' / ' + String(cards.length).padStart(2, '0');
     document.querySelector('#prev-project').disabled = index === 0;
     document.querySelector('#next-project').disabled = index === cards.length - 1;
-    place();
   }
-  document.querySelector('#prev-project').addEventListener('click', () => select(index - 1));
-  document.querySelector('#next-project').addEventListener('click', () => select(index + 1));
+  function goTo(next, instant = false) {
+    update(next);
+    if (!gallery.clientWidth) return;
+    const left = cards[index].getBoundingClientRect().left - gallery.getBoundingClientRect().left + gallery.scrollLeft - gutter();
+    gallery.scrollTo({ left, behavior: instant || reduce.matches ? 'instant' : 'smooth' });
+  }
+  function syncFromScroll() {
+    if (!gallery.clientWidth) return;
+    const start = gallery.getBoundingClientRect().left + gutter();
+    let nearest = 0, distance = Infinity;
+    cards.forEach((card, i) => {
+      const delta = Math.abs(card.getBoundingClientRect().left - start);
+      if (delta < distance) { distance = delta; nearest = i; }
+    });
+    if (gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 3) nearest = cards.length - 1;
+    update(nearest);
+  }
+  document.querySelector('#prev-project').addEventListener('click', () => goTo(index - 1));
+  document.querySelector('#next-project').addEventListener('click', () => goTo(index + 1));
+  jumps.forEach(button => button.addEventListener('click', () => goTo(Number(button.dataset.galleryGo))));
   gallery.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
     event.preventDefault();
-    select(event.key === 'Home' ? 0 : event.key === 'End' ? cards.length - 1 : index + (event.key === 'ArrowRight' ? 1 : -1));
+    goTo(event.key === 'Home' ? 0 : event.key === 'End' ? cards.length - 1 : index + (event.key === 'ArrowRight' ? 1 : -1));
   });
-  gallery.addEventListener('pointerdown', event => {
-    if (event.button !== 0) return;
-    drag = { id: event.pointerId, x: event.clientX, y: event.clientY, dx: 0, moved: false, time: performance.now(), target: event.target };
-  });
-  gallery.addEventListener('pointermove', event => {
-    cursor.style.left = event.clientX + 'px';
-    cursor.style.top = event.clientY + 'px';
-    cursor.classList.toggle('visible', event.pointerType === 'mouse');
-    if (!drag || drag.id !== event.pointerId) return;
-    const dx = event.clientX - drag.x;
-    if (!drag.moved && Math.abs(event.clientY - drag.y) > Math.abs(dx) + 10) { drag = null; return; }
-    if (Math.abs(dx) > 7 && !drag.moved) {
-      drag.moved = true;
-      gallery.setPointerCapture(event.pointerId);
-      gallery.classList.add('is-dragging');
-    }
-    if (drag.moved) {
-      drag.dx = dx;
-      const edge = (index === 0 && dx > 0) || (index === cards.length - 1 && dx < 0);
-      place(dx * (edge ? .28 : 1));
-    }
-  });
-  function endDrag(event) {
-    if (!drag || event.pointerId !== drag.id) return;
-    const previous = drag;
-    drag = null;
-    gallery.classList.remove('is-dragging');
-    if (gallery.hasPointerCapture(event.pointerId)) gallery.releasePointerCapture(event.pointerId);
-    if (previous.moved) {
-      blockClickUntil = performance.now() + 350;
-      const speed = Math.abs(previous.dx) / Math.max(1, performance.now() - previous.time);
-      const threshold = Math.min(95, dimensions().width * .16);
-      select(index + (Math.abs(previous.dx) > threshold || speed > .45 ? Math.sign(-previous.dx) : 0));
-    } else place();
-  }
-  gallery.addEventListener('pointerup', endDrag);
-  gallery.addEventListener('pointercancel', event => { if (drag) drag.dx = 0; endDrag(event); });
-  gallery.addEventListener('pointerleave', () => cursor.classList.remove('visible'));
+  gallery.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(syncFromScroll, 120);
+  }, { passive: true });
+  gallery.addEventListener('scrollend', syncFromScroll);
+  gallery.addEventListener('gallery:show', () => requestAnimationFrame(() => goTo(index, true)));
   gallery.addEventListener('dragstart', event => event.preventDefault());
-  new ResizeObserver(() => place()).observe(gallery);
-  select(0);
+  let previousWidth = 0;
+  new ResizeObserver(() => {
+    if (gallery.clientWidth && gallery.clientWidth !== previousWidth) {
+      previousWidth = gallery.clientWidth;
+      goTo(index, true);
+    }
+  }).observe(gallery);
+  update(0);
 
   const dialog = document.querySelector('#case-dialog');
   const content = document.querySelector('#case-content');
@@ -103,7 +86,6 @@ export function initGallery(reduce) {
     sourceButton = button;
     sourceImage = button.querySelector('img');
     savedScroll = scrollY;
-    cursor.classList.remove('visible');
     renderCase(i);
     const reveal = () => {
       if (sourceImage) sourceImage.style.viewTransitionName = '';
@@ -132,10 +114,8 @@ export function initGallery(reduce) {
     dialog.close();
   }
   document.querySelectorAll('[data-open-project]').forEach(button => {
-    button.addEventListener('click', event => {
-      if (performance.now() < blockClickUntil) { event.preventDefault(); return; }
+    button.addEventListener('click', () => {
       const i = Number(button.dataset.openProject);
-      if (button.closest('.gallery') && i !== index) { select(i); return; }
       openCase(i, button);
     });
   });
