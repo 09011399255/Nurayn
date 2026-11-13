@@ -1,0 +1,11 @@
+{
+  "name": "nurayn-studio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check scripts/atmosphere.js && node --check scripts/edition.js && node --check scripts/gallery.js && node --check scripts/main.js && node --check scripts/playground.js && node --check scripts/projects.js"
+  }
+}
